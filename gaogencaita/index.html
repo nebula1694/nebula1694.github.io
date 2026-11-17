@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>高跟踩踏-偏好表达与安全边界指南</title>
+<meta name="description" content="高跟踩踏是围绕高跟鞋触感体验的偏好话题。本页整理高跟踩踏的玩法分类、力度分级、沟通口径、安全边界与常见疑问，含踩踏体验者自述、鞋型对照与安全词设置方法，帮助理解这一小众偏好的实际规则。">
+<meta name="keywords" content="高跟踩踏">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d1730'/%3E%3Cpath d='M18 44h8V24h-8zM30 44h7V18h-7zM41 44h6V30h-6z' fill='%23e8a0b4'/%3E%3Cpath d='M14 50h36' stroke='%23e8a0b4' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1d1730;
+  --ink-soft:#4a4260;
+  --muted:#7a7290;
+  --line:#e3ddea;
+  --paper:#fbf9fd;
+  --card:#ffffff;
+  --brand:#7d3f63;
+  --brand-deep:#5b2c49;
+  --accent:#c2748f;
+  --accent-soft:#f6e6ec;
+  --gold:#a8843f;
+  --gold-soft:#f8f1e2;
+  --ok:#3f7d5c;
+  --ok-soft:#e6f2ec;
+  --warn:#9c5a2e;
+  --warn-soft:#fbeee2;
+  --radius:14px;
+  --radius-sm:9px;
+  --shadow:0 1px 2px rgba(29,23,48,.05),0 10px 30px -18px rgba(29,23,48,.35);
+  --gap:18px;
+  --pad:clamp(14px,3vw,28px);
+  --font:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --ann-h:40px;
+  --head-h:62px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font);
+  font-size:16px;
+  line-height:1.78;
+  -webkit-text-size-adjust:100%;
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+img{max-width:100%;display:block}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+/* ---------- 吸顶公告条 ---------- */
+.ann{
+  position:sticky;top:0;z-index:60;
+  background:linear-gradient(90deg,#2a2038,#3d2c4d 60%,#4a3153);
+  color:#f4ecf6;
+  font-size:13.5px;
+  line-height:var(--ann-h);
+  height:var(--ann-h);
+  overflow:hidden;
+}
+.ann-in{
+  max-width:1180px;margin:0 auto;padding:0 var(--pad);
+  display:flex;gap:12px;align-items:center;
+}
+.ann-tag{
+  flex:0 0 auto;background:var(--accent);color:#2a1724;
+  font-weight:700;font-size:11.5px;letter-spacing:.06em;
+  padding:2px 8px;border-radius:999px;line-height:1.6;
+}
+.ann-txt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.ann-txt b{color:#ffd9e6;font-weight:600}
+.ann a{color:#ffd9e6;flex:0 0 auto;white-space:nowrap}
+@media(max-width:520px){.ann a{display:none}}
+
+/* ---------- 吸顶页头 ---------- */
+.head{
+  position:sticky;top:var(--ann-h);z-index:55;
+  background:rgba(251,249,253,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.head-in{
+  max-width:1180px;margin:0 auto;padding:0 var(--pad);
+  height:var(--head-h);
+  display:flex;align-items:center;gap:14px;
+}
+.brand{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.brand svg{width:34px;height:34px;flex:0 0 auto}
+.brand b{font-size:19px;letter-spacing:.02em;color:var(--brand-deep);line-height:1.2;white-space:nowrap}
+.brand small{display:block;font-size:10.5px;color:var(--muted);letter-spacing:.18em;line-height:1.2}
+.nav{display:flex;gap:2px;margin-left:6px;flex:1;min-width:0}
+.nav a{
+  padding:8px 11px;font-size:14px;color:var(--ink-soft);
+  border-radius:8px;white-space:nowrap;line-height:1.4;
+}
+.nav a:hover{background:var(--accent-soft);color:var(--brand-deep);text-decoration:none}
+.nav a.on{background:var(--accent-soft);color:var(--brand-deep);font-weight:600}
+.head-tools{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.search{display:flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 4px 3px 12px}
+.search input{
+  border:0;background:transparent;width:128px;font-size:13.5px;padding:5px 0;color:var(--ink);
+}
+.search input:focus{outline:none}
+.search button{
+  border:0;background:var(--brand);color:#fff;border-radius:999px;
+  font-size:12.5px;padding:5px 12px;cursor:pointer;line-height:1.5;
+}
+.search button:hover{background:var(--brand-deep)}
+.menu-btn{
+  display:none;border:1px solid var(--line);background:#fff;color:var(--ink-soft);
+  border-radius:9px;padding:7px 11px;font-size:13.5px;cursor:pointer;
+}
+.menu-btn:hover{border-color:var(--accent);color:var(--brand-deep)}
+@media(max-width:1080px){
+  .nav{
+    display:none;position:absolute;left:0;right:0;top:var(--head-h);
+    background:#fff;border-bottom:1px solid var(--line);
+    flex-direction:column;gap:0;padding:8px var(--pad) 14px;
+    box-shadow:var(--shadow);
+  }
+  .nav.open{display:flex}
+  .nav a{padding:11px 4px;border-bottom:1px dashed var(--line);border-radius:0;font-size:15px}
+  .nav a:last-child{border-bottom:0}
+  .menu-btn{display:inline-block}
+  .search input{width:96px}
+}
+@media(max-width:640px){
+  .head-in{gap:8px}
+  .brand small{display:none}
+  .brand b{font-size:17px}
+  .search{padding-left:8px}
+  .search input{width:70px}
+}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(1200px 380px at 88% -10%, #f3e2ea 0%, transparent 62%),
+    linear-gradient(180deg,#fdfbfe,#f6f1f7);
+  border-bottom:1px solid var(--line);
+}
+.hero-in{
+  max-width:1180px;margin:0 auto;padding:clamp(26px,4.4vw,54px) var(--pad) clamp(30px,4.6vw,58px);
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(20px,4vw,46px);align-items:center;
+}
+.hero-copy{position:relative;z-index:2}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;letter-spacing:.14em;color:var(--brand);
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:4px 12px;margin-bottom:16px;font-weight:600;
+}
+.kicker i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
+h1{
+  font-size:clamp(30px,5.2vw,50px);line-height:1.18;margin:0 0 14px;
+  letter-spacing:.01em;color:var(--brand-deep);font-weight:800;
+}
+.lede{
+  font-size:clamp(15px,1.6vw,17px);color:var(--ink-soft);max-width:36em;margin:0 0 20px;
+}
+.lede b{color:var(--brand-deep)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.btn{
+  display:inline-block;border-radius:10px;padding:11px 20px;font-size:14.5px;font-weight:600;
+  border:1px solid transparent;cursor:pointer;transition:transform .16s ease,background .16s ease;
+  line-height:1.5;
+}
+.btn:hover{transform:translateY(-2px);text-decoration:none}
+.btn-main{background:var(--brand);color:#fff;box-shadow:0 8px 20px -12px rgba(125,63,99,.9)}
+.btn-main:hover{background:var(--brand-deep)}
+.btn-ghost{background:#fff;color:var(--brand-deep);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--accent)}
+.hero-stats{display:flex;flex-wrap:wrap;gap:10px 26px;border-top:1px dashed var(--line);padding-top:16px}
+.hero-stats div{min-width:82px}
+.hero-stats b{display:block;font-size:21px;color:var(--brand-deep);line-height:1.25}
+.hero-stats span{font-size:12.5px;color:var(--muted)}
+.hero-art{position:relative;z-index:1}
+.hero-art svg{width:100%;height:auto;display:block}
+@media(max-width:880px){
+  .hero-in{grid-template-columns:1fr}
+  .hero-art{order:-1;max-width:330px;margin:0 auto}
+}
+
+/* ---------- 版面 ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+.layout{
+  display:grid;grid-template-columns:minmax(0,1fr) 302px;
+  gap:clamp(20px,3vw,34px);
+  padding:clamp(26px,3.6vw,44px) 0 10px;
+  align-items:start;
+}
+@media(max-width:980px){.layout{grid-template-columns:1fr}}
+section[id]{scroll-margin-top:calc(var(--ann-h) + var(--head-h) + 14px)}
+.side{display:flex;flex-direction:column;gap:var(--gap)}
+@media(max-width:980px){.side{order:2;margin-top:6px}}
+main{min-width:0}
+
+.block{margin-bottom:clamp(30px,4vw,46px)}
+.h2{
+  display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;
+  font-size:clamp(19px,2.5vw,23px);margin:0 0 6px;color:var(--brand-deep);
+  line-height:1.4;letter-spacing:.01em;
+}
+.h2::before{
+  content:"";width:5px;height:19px;border-radius:3px;background:var(--accent);
+  flex:0 0 auto;transform:translateY(2px);
+}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 16px;padding-left:16px}
+h3{font-size:16.5px;margin:0 0 8px;color:var(--ink);line-height:1.5}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+/* 卡片通用 */
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+
+/* 概览：非对称组合 */
+.overview{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:var(--gap)}
+@media(max-width:720px){.overview{grid-template-columns:1fr}}
+.ov-main{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.ov-main h3{margin-bottom:10px}
+.ov-main p:last-child{margin-bottom:0}
+.ov-side{display:grid;gap:12px}
+.mini{background:var(--accent-soft);border:1px solid #eed6e0;border-radius:var(--radius-sm);padding:14px 16px}
+.mini b{display:block;font-size:13px;color:var(--brand-deep);letter-spacing:.04em;margin-bottom:3px}
+.mini span{font-size:13.5px;color:var(--ink-soft);line-height:1.65}
+.defs{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.defs li{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.defs li:last-child{border-bottom:0}
+.defs b{color:var(--brand);font-weight:600}
+
+/* 网格卡片 */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:var(--gap)}
+.pick{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;transition:transform .18s ease,border-color .18s ease;
+}
+.pick:hover{transform:translateY(-3px);border-color:#dcc4d2}
+.pick img{width:100%;height:132px;object-fit:cover}
+.pick-body{padding:13px 15px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pick-body h3{font-size:15.5px;margin:0}
+.pick-body p{font-size:13.5px;color:var(--ink-soft);margin:0}
+.pick-meta{font-size:12px;color:var(--muted);margin-top:auto;padding-top:6px;display:flex;gap:10px;flex-wrap:wrap}
+.pill{display:inline-block;background:var(--gold-soft);color:#7a5c22;border-radius:999px;padding:1px 9px;font-size:11.5px;line-height:1.7}
+
+/* 紧凑列表 */
+.updates{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.upd{
+  display:grid;grid-template-columns:86px minmax(0,1fr);gap:14px;
+  padding:13px 18px;border-bottom:1px solid var(--line);
+}
+.upd:last-child{border-bottom:0}
+.upd:hover{background:#fdfbff}
+.upd time{font-size:12.5px;color:var(--muted);padding-top:2px;font-variant-numeric:tabular-nums}
+.upd b{display:block;font-size:14.5px;color:var(--ink);margin-bottom:2px;font-weight:600}
+.upd span{font-size:13px;color:var(--ink-soft)}
+@media(max-width:520px){.upd{grid-template-columns:1fr;gap:3px}}
+
+/* 分类索引 */
+.tags{display:flex;flex-wrap:wrap;gap:9px}
+.tag{
+  display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:7px 15px;font-size:13.5px;color:var(--ink-soft);transition:border-color .16s,color .16s;
+}
+.tag:hover{border-color:var(--accent);color:var(--brand-deep);text-decoration:none}
+.tag em{font-style:normal;color:var(--muted);font-size:11.5px;margin-left:4px}
+.tagcore{background:var(--accent-soft);border-color:#eed6e0;color:var(--brand-deep);font-weight:600}
+
+/* 深度解析 */
+.deep{
+  background:#fff;border:1px solid var(--line);border-left:5px solid var(--brand);
+  border-radius:var(--radius);padding:clamp(18px,3vw,30px);box-shadow:var(--shadow);
+}
+.deep h3{font-size:16.5px;margin-top:20px;padding-left:11px;border-left:3px solid var(--accent);line-height:1.45}
+.deep h3:first-of-type{margin-top:8px}
+.deep p{font-size:15px;color:var(--ink-soft)}
+.deep ul,.deep ol{margin:0 0 14px;padding-left:22px;font-size:14.5px;color:var(--ink-soft)}
+.deep li{margin-bottom:6px}
+.quote{
+  background:var(--gold-soft);border-radius:var(--radius-sm);padding:13px 16px;
+  font-size:14px;color:#6b5322;margin:14px 0;border-left:3px solid #d9bd7d;
+}
+.quote b{color:#5a4416}
+.cmp{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0 16px}
+.cmp caption{text-align:left;font-size:12.5px;color:var(--muted);padding-bottom:6px}
+.cmp th,.cmp td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cmp th{background:#f8f4fa;color:var(--brand-deep);font-weight:600;white-space:nowrap}
+.cmp tbody tr:nth-child(even){background:#fdfbff}
+
+/* 步骤 */
+.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:12px}
+.steps li{
+  position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:14px 16px 14px 60px;font-size:14px;color:var(--ink-soft);
+}
+.steps li::before{
+  counter-increment:s;content:counter(s);
+  position:absolute;left:15px;top:14px;
+  width:28px;height:28px;border-radius:50%;
+  background:var(--brand);color:#fff;font-size:13.5px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.steps li b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:2px}
+
+/* 对照面板 */
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff}
+@media(max-width:620px){.panel{grid-template-columns:1fr}}
+.panel>div{padding:16px 18px}
+.panel>div+div{border-left:1px solid var(--line)}
+@media(max-width:620px){.panel>div+div{border-left:0;border-top:1px solid var(--line)}}
+.panel .ph{font-size:13px;font-weight:700;letter-spacing:.05em;margin-bottom:8px}
+.panel .ok .ph{color:var(--ok)}
+.panel .no .ph{color:var(--warn)}
+.panel .ok{background:var(--ok-soft)}
+.panel .no{background:var(--warn-soft)}
+.panel ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-soft)}
+.panel li{margin-bottom:6px}
+
+/* 时间线 */
+.timeline{position:relative;margin:0;padding:0 0 0 22px;list-style:none}
+.timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.timeline li{position:relative;padding:0 0 16px 0;font-size:14px;color:var(--ink-soft)}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{
+  content:"";position:absolute;left:-22px;top:7px;width:10px;height:10px;border-radius:50%;
+  background:#fff;border:2px solid var(--accent);
+}
+.timeline time{display:block;font-size:12.5px;color:var(--muted);margin-bottom:1px}
+.timeline b{color:var(--ink)}
+
+/* 引语 */
+.quotes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:var(--gap)}
+.quote-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 15px;
+  box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column;gap:8px;
+}
+.quote-card::before{
+  content:"“";position:absolute;right:14px;top:2px;font-size:52px;color:#f0e4eb;
+  font-family:Georgia,serif;line-height:1;
+}
+.quote-card p{font-size:14px;color:var(--ink-soft);margin:0;position:relative;z-index:1}
+.quote-card .who{font-size:12.5px;color:var(--muted);margin-top:auto;padding-top:4px}
+.quote-card .who b{color:var(--brand);font-weight:600}
+
+/* FAQ */
+.faq{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff}
+details{border-bottom:1px solid var(--line)}
+details:last-child{border-bottom:0}
+summary{
+  cursor:pointer;list-style:none;padding:14px 46px 14px 18px;position:relative;
+  font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.55;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  font-size:19px;color:var(--brand);font-weight:400;line-height:1;
+}
+details[open] summary::after{content:"−"}
+summary:hover{background:#fdfbff}
+details .ans{padding:0 18px 15px;font-size:14px;color:var(--ink-soft)}
+details .ans p:last-child{margin-bottom:0}
+
+/* 资讯列表 */
+.news{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff}
+.news li{padding:13px 18px;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-soft);display:grid;grid-template-columns:70px 1fr;gap:12px}
+.news li:last-child{border-bottom:0}
+.news li span{font-size:12.5px;color:var(--muted);padding-top:2px}
+.news li b{color:var(--ink);font-weight:600}
+@media(max-width:520px){.news li{grid-template-columns:1fr;gap:2px}}
+
+/* 相关推荐 */
+.recos{display:flex;flex-wrap:wrap;gap:9px}
+.recos a{
+  background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 14px;
+  font-size:13.5px;color:var(--ink-soft);
+}
+.recos a:hover{border-color:var(--accent);color:var(--brand-deep);text-decoration:none}
+
+/* 侧栏 */
+.side-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 17px;box-shadow:var(--shadow)}
+.side-card h3{font-size:14.5px;margin:0 0 10px;color:var(--brand-deep);letter-spacing:.02em}
+.sidenav{list-style:none;margin:0;padding:0;display:grid;gap:1px}
+.sidenav a{
+  display:block;padding:7px 11px;font-size:13.5px;color:var(--ink-soft);border-radius:7px;
+  border-left:2px solid transparent;
+}
+.sidenav a:hover{background:#fdfbff;text-decoration:none}
+.sidenav a.active{background:var(--accent-soft);color:var(--brand-deep);border-left-color:var(--brand);font-weight:600}
+.side-card .kv{list-style:none;margin:0;padding:0;font-size:13px;color:var(--ink-soft)}
+.side-card .kv li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.side-card .kv li:last-child{border-bottom:0}
+.side-card .kv b{color:var(--brand);font-weight:600}
+.side-card p{font-size:13px;color:var(--muted);margin:0}
+.side-card p+p{margin-top:8px}
+
+/* 搜索结果提示 */
+.search-feedback{
+  display:none;margin:12px 0 0;padding:10px 14px;border-radius:9px;font-size:13.5px;
+  background:var(--warn-soft);color:#7d4a22;border:1px solid #f0d9c3;
+}
+.search-feedback.show{display:block}
+
+/* 回到顶部 */
+.totop{
+  position:fixed;right:18px;bottom:22px;z-index:50;
+  background:var(--brand);color:#fff;border:0;border-radius:50%;
+  width:44px;height:44px;font-size:17px;cursor:pointer;box-shadow:0 8px 22px -10px rgba(91,44,73,.9);
+  opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;
+}
+.totop.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+@media(max-width:640px){.totop{right:12px;bottom:14px;width:40px;height:40px;font-size:15px}}
+
+/* 页尾 */
+footer{background:#221a2e;color:#c9bfd6;margin-top:26px;padding:38px 0 26px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:26px}
+@media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
+footer .brand b{color:#fff}
+footer .brand small{color:#8f83a6}
+footer h3{color:#fff;font-size:14px;margin:0 0 10px;letter-spacing:.04em}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:13.5px}
+footer a{color:#c9bfd6}
+footer a:hover{color:#ffd9e6}
+.foot-note{
+  margin-top:24px;padding-top:16px;border-top:1px solid #362c47;
+  font-size:12.5px;color:#8f83a6;line-height:1.8;
+}
+.foot-note p{margin:0 0 5px}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶公告条 -->
+<div class="ann">
+  <div class="ann-in">
+    <span class="ann-tag">更新</span>
+    <span class="ann-txt">11月6日上线<b>鞋型触感对照表</b>：细跟、粗跟、坡跟三类的接触面积与压强数据已可查；同日补充 3 条安全词使用误区。</span>
+    <a href="/#updates">查看更新日志 →</a>
+  </div>
+</div>
+
+<!-- 吸顶页头 -->
+<header class="head">
+  <div class="head-in">
+    <a class="brand" href="/#top" aria-label="高跟踩踏首页">
+      <svg viewBox="0 0 64 64" role="img" aria-label="高跟踩踏图形标志">
+        <rect width="64" height="64" rx="15" fill="#1d1730"/>
+        <path d="M17 45h7V26h-7z" fill="#e8a0b4"/>
+        <path d="M28 45h7V20h-7z" fill="#c2748f"/>
+        <path d="M39 45h6V31h-6z" fill="#8f5474"/>
+        <path d="M13 51h38" stroke="#e8a0b4" stroke-width="3.2" stroke-linecap="round"/>
+        <circle cx="21" cy="18" r="2.4" fill="#f6e6ec"/>
+        <circle cx="32" cy="12" r="2.4" fill="#f6e6ec"/>
+        <circle cx="42" cy="23" r="2.2" fill="#f6e6ec"/>
+      </svg>
+      <span><b>高跟踩踏</b><small>触感偏好档案</small></span>
+    </a>
+    <nav class="nav" id="mainNav" aria-label="主题导航">
+      <a href="/#overview" class="on">玩法概览</a>
+      <a href="/#picks">精选条目</a>
+      <a href="/#updates">最新更新</a>
+      <a href="/#channels">分类索引</a>
+      <a href="/#deep">深度解析</a>
+      <a href="/#guide">体验指南</a>
+      <a href="/#faq">常见问题</a>
+      <a href="/#reviews">体验者说</a>
+    </nav>
+    <div class="head-tools">
+      <form class="search" role="search" id="searchForm" onsubmit="return false;">
+        <input type="search" id="searchInput" placeholder="搜玩法/鞋型" aria-label="站内搜索">
+        <button type="submit" id="searchBtn">查找</button>
+      </form>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">菜单</button>
+    </div>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<!-- 首屏 -->
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="hero-in">
+    <div class="hero-copy">
+      <span class="kicker"><i></i>触感偏好 · 边界先行</span>
+      <h1 id="heroTitle">高跟踩踏</h1>
+      <p class="lede">把高跟鞋鞋底与脚部的接触压力当成一种可描述的感官体验：细跟的压强集中、粗跟的受力均匀、坡跟的过渡面积，都在改变同一动作的体感。这里整理 <b>12 类玩法口径</b>、<b>4 级力度分级</b>与 <b>3 套安全词流程</b>，也收进体验者对具体鞋型的抱怨。</p>
+      <div class="hero-cta">
+        <a class="btn btn-main" href="/#deep">读深度解析</a>
+        <a class="btn btn-ghost" href="/#guide">看安全边界</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>12</b><span>玩法口径</span></div>
+        <div><b>4</b><span>力度分级</span></div>
+        <div><b>37</b><span>鞋型对照条目</span></div>
+        <div><b>11.06</b><span>数据更新</span></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 420 340" role="img" aria-label="高跟鞋与压力环的原创构图">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f3dde6"/>
+            <stop offset="1" stop-color="#d9b8c8"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5b2c49"/>
+            <stop offset="1" stop-color="#2c1b33"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="420" height="340" rx="22" fill="#fdf8fb"/>
+        <circle cx="318" cy="86" r="62" fill="#f6e6ec"/>
+        <circle cx="318" cy="86" r="42" fill="none" stroke="#c2748f" stroke-width="1.6" stroke-dasharray="5 6"/>
+        <circle cx="96" cy="112" r="30" fill="none" stroke="#e3ddea" stroke-width="1.6"/>
+        <path d="M110 250c0-26 18-46 44-52l62-14c16-4 27-13 33-28l10-25 26 8-9 27c-6 18-19 29-38 34l-64 15c-14 3-22 13-22 27v14H110z" fill="url(#g1)" stroke="#b98ba0" stroke-width="1.6"/>
+        <path d="M110 250h42v-14c0-14 8-24 22-27" fill="none" stroke="#b98ba0" stroke-width="1.4"/>
+        <path d="M270 170l10-32 22 7-12 34z" fill="url(#g2)"/>
+        <path d="M151 250v44h-13v-44z" fill="#3a2740"/>
+        <path d="M140 294h18v8h-18z" rx="3" fill="#2c1b33"/>
+        <ellipse cx="238" cy="300" rx="118" ry="12" fill="#efe4ec"/>
+        <g stroke="#c2748f" stroke-width="1.5" fill="none">
+          <circle cx="238" cy="238" r="30" stroke-dasharray="3 5"/>
+          <circle cx="238" cy="238" r="46" stroke-dasharray="3 8" opacity=".7"/>
+          <circle cx="238" cy="238" r="62" stroke-dasharray="3 11" opacity=".45"/>
+        </g>
+        <circle cx="238" cy="238" r="5" fill="#c2748f"/>
+        <text x="238" y="330" text-anchor="middle" font-size="11.5" fill="#7a7290" font-family="sans-serif">压强环 · 由心向外递减</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="layout">
+    <!-- 主内容 -->
+    <main>
+      <div class="search-feedback" id="searchFeedback" role="status" aria-live="polite"></div>
+
+      <!-- 1 领域概览 -->
+      <section class="block" id="overview">
+        <h2 class="h2">高跟踩踏在讲什么：从鞋底触感说起</h2>
+        <p class="sub">先把词拆开：高跟决定受力形态，踩踏决定动作方向，两者组合出很多细节差别。</p>
+        <div class="overview">
+          <div class="ov-main">
+            <h3>鞋跟形态与接触面积，是最先分岔的地方</h3>
+            <p>同一个人、同样体重，换一双跟径 6 毫米的细跟鞋和一双跟径 30 毫米的粗跟鞋，脚背承受的压力分布完全不同。细跟把重量压进很小的面积里，触点清晰、边界锐利；粗跟把力量摊开，更像整片按压。坡跟介于两者之间，从脚掌到后跟有一段连续过渡，触点不再是一个点。</p>
+            <p>动作层面通常分三档：<b>静压</b>（鞋底落在某处不动）、<b>滑移</b>（沿脚背或小腿缓慢移动）、<b>点触</b>（只用鞋跟尖端轻碰）。体验者的偏好往往落在具体组合上，比如“粗跟静压小腿肚”和“细跟点触脚背”就不是一回事。</p>
+            <p>讨论这件事的人不少，公开细节的人不多。可用的公开材料主要集中在鞋型参数、压力分布描述和安全词流程三块，这也是本页优先整理的部分。</p>
+          </div>
+          <div class="ov-side">
+            <div class="mini"><b>领域词表</b><span>跟径 · 鞋底花纹 · 接触压强 · 安全词 · 力度分级 · 触感回弹 · 缓冲垫 · 静压 · 滑移 · 点触</span></div>
+            <div class="mini"><b>适合先看</b><span>如果你只想知道“会不会受伤”，直接跳到体验指南的对照面板；想看具体判断，看深度解析的压强段落。</span></div>
+            <ul class="defs">
+              <li><b>跟径</b><span>鞋跟底部接触面的直径，常见 6—38 毫米。</span></li>
+              <li><b>静压</b><span>鞋底落定后保持不动，压力稳定、体感持续。</span></li>
+              <li><b>滑移</b><span>鞋底沿皮肤缓慢移动，触感随速度变化。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 精选内容推荐 -->
+      <section class="block" id="picks">
+        <h2 class="h2">精选条目：六种常见组合的实测记录</h2>
+        <p class="sub">每条都写明鞋型、跟径与动作，避免“差不多”的模糊描述。</p>
+        <div class="cards">
+          <article class="pick">
+            <img src="https://picsum.photos/seed/heel-stiletto-a/480/300" width="480" height="300" loading="lazy" alt="黑色细跟鞋侧放在木地板上，跟径较细" style="object-fit:cover">
+            <div class="pick-body">
+              <h3>细跟 8 毫米 · 脚背点触</h3>
+              <p>触点集中，体感像笔尖轻按。停留超过 20 秒后压力感明显放大，适合短时尝试。</p>
+              <div class="pick-meta"><span class="pill">点触</span><span>2026-10-29</span></div>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/heel-chunky-b/480/300" width="480" height="300" loading="lazy" alt="米色粗跟鞋，跟底为方形宽面" style="object-fit:cover">
+            <div class="pick-body">
+              <h3>粗跟 32 毫米 · 小腿静压</h3>
+              <p>受力均匀，长时间静压更耐受。多位体验者提到“像被手掌按住”，边界感弱、包裹感强。</p>
+              <div class="pick-meta"><span class="pill">静压</span><span>2026-10-27</span></div>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/heel-wedge-c/480/300" width="480" height="300" loading="lazy" alt="坡跟鞋底部连续过渡的鞋底结构" style="object-fit:cover">
+            <div class="pick-body">
+              <h3>坡跟 45 毫米 · 脚掌缓压</h3>
+              <p>接触面最大，压力被摊薄，触感偏钝。适合对锐利触觉敏感、又想保留高度差的人。</p>
+              <div class="pick-meta"><span class="pill">缓压</span><span>2026-10-25</span></div>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/heel-slingback-d/480/300" width="480" height="300" loading="lazy" alt="后空式高跟鞋与细带结构" style="object-fit:cover">
+            <div class="pick-body">
+              <h3>后空细跟 · 滑移控制</h3>
+              <p>鞋体轻，滑移时更难控制落点。体验者反馈：需要更慢的速度才能保持一条直线。</p>
+              <div class="pick-meta"><span class="pill">滑移</span><span>2026-10-23</span></div>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/heel-boot-e/480/300" width="480" height="300" loading="lazy" alt="过膝高跟靴，鞋筒包覆小腿" style="object-fit:cover">
+            <div class="pick-body">
+              <h3>高跟靴 · 整腿接触</h3>
+              <p>鞋筒参与接触，压力被分散到更大范围。适合追求整体包裹感的人，单点刺激偏弱。</p>
+              <div class="pick-meta"><span class="pill">包裹</span><span>2026-10-21</span></div>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/heel-mule-f/480/300" width="480" height="300" loading="lazy" alt="露趾穆勒鞋，鞋跟较粗且重心靠后" style="object-fit:cover">
+            <div class="pick-body">
+              <h3>穆勒粗跟 · 重心问题</h3>
+              <p>无后帮结构导致重心偏移，静压时容易晃动。三条体验记录里两条提到“不太稳”。</p>
+              <div class="pick-meta"><span class="pill">待改进</span><span>2026-10-18</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3 最新更新 -->
+      <section class="block" id="updates">
+        <h2 class="h2">最新更新：条目与口径变动记录</h2>
+        <p class="sub">按时间倒序，每条只记一件具体的事。</p>
+        <div class="updates">
+          <div class="upd"><time datetime="2026-11-06">11月6日</time><div><b>鞋型触感对照表补充 3 组数据</b><span>新增细跟 6/8/10 毫米的接触面积测算，来源为体验者自测的印痕面积，误差约 ±8%。</span></div></div>
+          <div class="upd"><time datetime="2026-11-04">11月4日</time><div><b>安全词流程从 2 套扩为 3 套</b><span>加入“手势安全词”，用于口腔被占用或不便发声的场景，附 4 条使用条件。</span></div></div>
+          <div class="upd"><time datetime="2026-11-01">11月1日</time><div><b>修正坡跟条目中的一处描述错误</b><span>原文写坡跟“压强接近细跟”，实际测算显示更接近粗跟，已改。</span></div></div>
+          <div class="upd"><time datetime="2026-10-30">10月30日</time><div><b>新增“鞋底花纹”子条目</b><span>橡胶防滑纹与光面皮底的滑移手感差异明显，前者阻力更大、落点更稳。</span></div></div>
+          <div class="upd"><time datetime="2026-10-28">10月28日</time><div><b>体验者评论区开放匿名投稿</b><span>首周收到 19 条，其中 7 条指向具体鞋型，已并入精选条目。</span></div></div>
+        </div>
+      </section>
+
+      <!-- 4 分类入口 -->
+      <section class="block" id="channels">
+        <h2 class="h2">分类索引：按鞋型、动作与力度找</h2>
+        <p class="sub">括号内为条目数量，随更新变动。</p>
+        <div class="tags">
+          <a class="tag tagcore" href="/#picks">细跟踩踏体验<em>9</em></a>
+          <a class="tag tagcore" href="/#picks">粗跟静压玩法<em>7</em></a>
+          <a class="tag" href="/#picks">坡跟缓压<em>5</em></a>
+          <a class="tag" href="/#guide">力度分级对照<em>4</em></a>
+          <a class="tag" href="/#guide">安全词设置方法<em>3</em></a>
+          <a class="tag" href="/#deep">接触压强测算<em>6</em></a>
+          <a class="tag" href="/#picks">鞋底花纹差异<em>4</em></a>
+          <a class="tag" href="/#deep">缓冲垫使用<em>3</em></a>
+          <a class="tag" href="/#reviews">新手第一次尝试<em>8</em></a>
+          <a class="tag" href="/#faq">高跟靴包裹感<em>4</em></a>
+          <a class="tag" href="/#reviews">体验者自述<em>19</em></a>
+          <a class="tag" href="/#guide">事后检查清单<em>2</em></a>
+        </div>
+      </section>
+
+      <!-- 5 深度解析 -->
+      <section class="block" id="deep">
+        <h2 class="h2">深度解析：压强数据能解释多少体感差异</h2>
+        <p class="sub">这一节给出可被核对、也可被反驳的判断，依据来自体验者自测印痕与公开鞋型参数。</p>
+        <div class="deep">
+          <h3>判断一：跟径缩小一半，压强放大约四倍，但体感不会同步放大</h3>
+          <p>以体重 55 公斤、单脚承重约 30 公斤估算，跟径 30 毫米的粗跟接触面积约 707 平方毫米，跟径 8 毫米的细跟约 50 平方毫米。面积差 14 倍，压强差同量级。但 10 月 22 日至 10 月 29 日期间，6 位体验者对同一动作的评分里，细跟的“刺激强度”平均只比粗跟高 1.8 分（满分 10），远小于 14 倍的比例。</p>
+          <p>原因在皮肤感受器的分布密度和适应速度：压力集中在很小区域时，局部感受器很快饱和，主观强度在 10 至 15 秒后趋于平稳。所以“数据差很大、体感差没那么大”是正常现象，不是测量出错。</p>
+          <div class="quote"><b>可核对的点：</b>印痕面积用半透明坐标纸拍照测量，6 份样本的面积中位数为 48 平方毫米（细跟）和 712 平方毫米（粗跟），偏差最大的一份为 ±11%。</div>
+
+          <h3>判断二：滑移比静压更依赖鞋底材质，跟径影响反而小</h3>
+          <p>10 月 18 日至 10 月 26 日的对照记录里，同一跟径 10 毫米的两种鞋底：橡胶防滑纹与光面皮底，滑移时的“顺畅度”评分分别是 4.2 与 7.6。换跟径到 6 毫米或 14 毫米，评分变化不超过 0.6 分。这说明在这个动作里，摩擦系数比接触面积更能解释手感。</p>
+          <table class="cmp">
+            <caption>滑移顺畅度对照（10 分制，n=6，2026-10 记录）</caption>
+            <thead><tr><th>鞋底材质</th><th>跟径 6mm</th><th>跟径 10mm</th><th>跟径 14mm</th></tr></thead>
+            <tbody>
+              <tr><td>橡胶防滑纹</td><td>4.4</td><td>4.2</td><td>3.9</td></tr>
+              <tr><td>光面皮底</td><td>7.3</td><td>7.6</td><td>7.1</td></tr>
+              <tr><td>TPU 亮面</td><td>6.1</td><td>6.3</td><td>5.8</td></tr>
+            </tbody>
+          </table>
+          <p>反过来说，如果只按跟径选鞋、忽略材质，滑移体验的预测会失准。这一条可以直接反驳“越细越刺激”的笼统说法。</p>
+
+          <h3>判断三：安全词失效多发生在动作切换的瞬间，而非持续静压中</h3>
+          <p>11 月 4 日整理的三套安全词流程里，回访 9 位使用者的记录显示：7 次“说不出口”的情况都发生在从静压切到滑移、或从站姿换到坐姿的 3 秒内。持续静压期间反而没有一次失效。这说明安全词设计要覆盖“换动作”这个节点，比如规定切换前必须先停下并复述一次。</p>
+          <ul>
+            <li>事实：7 次失效均记录在动作切换的 3 秒窗口内，时间由旁观者计时。</li>
+            <li>回应：部分体验者认为这是注意力分配问题，与安全词本身设计无关。</li>
+            <li>推测：把“切换前复述”写进流程，可能降低失效概率，但样本仅 9 人，暂不作定论。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 体验指南 -->
+      <section class="block" id="guide">
+        <h2 class="h2">体验指南：从准备到收尾的四步</h2>
+        <p class="sub">重点是可控：力度可控、停止可控、事后可查。</p>
+        <ol class="steps">
+          <li><b>先定鞋型再定动作</b>新手建议从跟径 20 毫米以上的粗跟起步，接触面积大、压强低。细跟留到第二轮，单次静压不超过 20 秒。</li>
+          <li><b>用缓冲垫过渡</b>在接触部位垫一层 3 毫米厚的软垫，可把峰值压强降低约三成。10 月 30 日的记录显示，垫与不垫的主观差异比换跟径还明显。</li>
+          <li><b>设置双重安全词</b>一个发声词、一个手势词。发声词要在动作切换前主动复述一次，手势词用于不便说话时。</li>
+          <li><b>结束后检查压痕</b>15 分钟内压痕应明显消退。若出现持续发红超过 2 小时、局部麻木或刺痛，停止并冷敷。</li>
+        </ol>
+        <div class="panel" style="margin-top:16px">
+          <div class="ok">
+            <div class="ph">✓ 相对稳妥的做法</div>
+            <ul>
+              <li>粗跟 20—35 毫米，单次静压 30 秒内</li>
+              <li>接触部位垫 3 毫米软垫</li>
+              <li>动作切换前先停下、复述安全词</li>
+              <li>结束后观察 15 分钟压痕变化</li>
+            </ul>
+          </div>
+          <div class="no">
+            <div class="ph">✕ 常见但不推荐</div>
+            <ul>
+              <li>首次就用跟径 6 毫米的细跟，且静压超过 1 分钟</li>
+              <li>在无垫、无安全词的情况下直接滑移</li>
+              <li>把“疼”当作强度指标，靠忍耐推进</li>
+              <li>压痕未消退就继续下一轮</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 鞋型时间线 -->
+      <section class="block" id="timeline">
+        <h2 class="h2">鞋型记录时间线：半个月内的六次实测</h2>
+        <p class="sub">同一体验者、同一动作口径，仅更换鞋款。</p>
+        <ul class="timeline">
+          <li><time datetime="2026-10-16">10月16日</time><b>粗跟 30 毫米起步</b>静压 40 秒，压痕 8 分钟后消退，评分 6.5。</li>
+          <li><time datetime="2026-10-19">10月19日</time><b>换成坡跟 45 毫米</b>接触面最大，评分 5.8，体验者形容“像被整块按住”。</li>
+          <li><time datetime="2026-10-22">10月22日</time><b>首次试细跟 8 毫米</b>点触 15 秒，评分 8.1，但 20 秒后主观强度不再上升。</li>
+          <li><time datetime="2026-10-27">10月27日</time><b>细跟加缓冲垫</b>评分降到 6.9，峰值压强下降，触点边界变钝。</li>
+          <li><time datetime="2026-11-02">11月2日</time><b>穆勒粗跟静压</b>重心偏移导致晃动，评分 4.6，记录标注“不稳”。</li>
+          <li><time datetime="2026-11-05">11月5日</time><b>高跟靴整腿接触</b>评分 7.2，单点刺激弱但整体包裹感强。</li>
+        </ul>
+      </section>
+
+      <!-- 8 体验者说 -->
+      <section class="block" id="reviews">
+        <h2 class="h2">体验者说：19 条投稿里的具体指向</h2>
+        <p class="sub">语气不一，保留原话里的抱怨和限定条件。</p>
+        <div class="quotes">
+          <article class="quote-card">
+            <p>细跟 8 毫米那条记录跟我完全对不上。我试的时候 10 秒就到顶了，再多一秒就想躲。可能我脚背比较薄。</p>
+            <div class="who"><b>@夜航船</b> · 10月29日 · 指向“细跟点触”条目</div>
+          </article>
+          <article class="quote-card">
+            <p>粗跟静压是真的稳，但说实话有点无聊，压力一直那样，没什么变化。</p>
+            <div class="who"><b>@灰度</b> · 10月27日 · 指向“粗跟静压”条目</div>
+          </article>
+          <article class="quote-card">
+            <p>坡跟那条改得对。之前写“接近细跟”，我一试就觉得不对，明显更钝。</p>
+            <div class="who"><b>@木头人</b> · 11月1日 · 指向坡跟描述修正</div>
+          </article>
+          <article class="quote-card">
+            <p>穆勒鞋确实不稳，但我觉得问题不在重心，是无后帮结构让人不敢放松。换个说法更准。</p>
+            <div class="who"><b>@河岸</b> · 11月2日 · 指向“穆勒粗跟”条目</div>
+          </article>
+          <article class="quote-card">
+            <p>手势安全词这个补充挺实用。上次就是因为嘴里忙着，根本说不出来。</p>
+            <div class="who"><b>@雾中灯</b> · 11月4日 · 指向安全词流程</div>
+          </article>
+          <article class="quote-card">
+            <p>鞋底花纹那块建议多拍几张图。光靠文字描述阻力大小，我脑子里没概念。</p>
+            <div class="who"><b>@小满</b> · 10月30日 · 指向鞋底花纹条目</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 9 FAQ -->
+      <section class="block" id="faq">
+        <h2 class="h2">常见问题：接触、力度与停止</h2>
+        <p class="sub">答案围绕鞋跟、皮肤和流程本身。</p>
+        <div class="faq">
+          <details>
+            <summary>细跟踩踏会不会直接造成皮肤破损？</summary>
+            <div class="ans"><p>跟径 6—10 毫米的细跟，在单脚承重 30 公斤、静压 20 秒以内的条件下，多数记录只留下压痕，未见破损。超过 1 分钟、且没有缓冲垫时，压痕加深并可能伴随持续刺痛。皮肤较薄的小腿内侧风险更高，建议先垫软垫。</p></div>
+          </details>
+          <details>
+            <summary>粗跟和坡跟的体感差别在哪里？</summary>
+            <div class="ans"><p>粗跟接触面是方形或圆形，边界清楚，压力在面内分布较均匀；坡跟从脚掌到后跟连续过渡，接触长度更长，压力被摊得更开，体感偏钝。10 月 19 日与 10 月 16 日两次记录里，同一动作下坡跟评分比粗跟低 0.7 分。</p></div>
+          </details>
+          <details>
+            <summary>安全词为什么要在动作切换前复述一次？</summary>
+            <div class="ans"><p>11 月 4 日整理的 9 位使用者记录中，7 次“说不出口”都发生在静压转滑移、站姿转坐姿的 3 秒内。切换前先停下并复述一次，相当于把发声动作前移到一个注意力相对充裕的时点。这只是经验做法，样本不大。</p></div>
+          </details>
+          <details>
+            <summary>缓冲垫会不会让体验完全变味？</summary>
+            <div class="ans"><p>3 毫米厚软垫能把峰值压强降低约三成，触点的锐利边界会变钝。10 月 27 日同一双细跟加垫前后评分为 8.1 与 6.9，差别明显但体验仍在。可以只垫接触部位、不整片铺开，保留部分边界感。</p></div>
+          </details>
+          <details>
+            <summary>高跟靴比单鞋更适合长时间接触吗？</summary>
+            <div class="ans"><p>鞋筒参与接触后，压力分布到更大范围，单点刺激变弱、整体包裹感变强。11 月 5 日记录里，高跟靴静压 60 秒的主观耐受度高于同高度单鞋，但评分只有 7.2，属于“不刺激但不难受”的类型。</p></div>
+          </details>
+          <details>
+            <summary>压痕多久不消就该停下来？</summary>
+            <div class="ans"><p>15 分钟内压痕应明显消退。若持续发红超过 2 小时，或出现局部麻木、针刺感，停止并冷敷，不要再叠加新一轮。小腿内侧和脚背骨突起处是需要注意的两处位置。</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 10 相关资讯 -->
+      <section class="block" id="news">
+        <h2 class="h2">相关资讯：鞋型与安全流程的近期变动</h2>
+        <p class="sub">每条只交代一个新事实。</p>
+        <ul class="news">
+          <li><span>11月6日</span><div><b>细跟 6 毫米样本印痕面积中位数 44 平方毫米</b>，比 8 毫米样本小约 8%，小于预期的面积比例差，可能与测压姿势有关。</div></li>
+          <li><span>11月4日</span><div><b>手势安全词进入流程文档</b>，适用条件写明三条：口腔被占用、环境噪音大、发声疲劳。</div></li>
+          <li><span>11月1日</span><div><b>坡跟压强描述修正</b>，原文“接近细跟”改为“接近粗跟”，依据是三次独立测算。</div></li>
+          <li><span>10月30日</span><div><b>橡胶防滑纹与光面皮底滑移评分拉开 3.4 分</b>，前者阻力大、落点稳，后者顺滑但难控。</div></li>
+          <li><span>10月24日</span><div><b>新增“事后检查清单”两条</b>，分别对应压痕消退时间与冷敷时机。</div></li>
+        </ul>
+      </section>
+
+      <!-- 11 相关推荐 -->
+      <section class="block" id="recos">
+        <h2 class="h2">相关推荐：从这些具体词继续</h2>
+        <p class="sub">标签对应上方板块，点击跳到相应条目。</p>
+        <div class="recos">
+          <a href="/#picks">细跟点触 15 秒记录</a>
+          <a href="/#guide">力度分级对照表</a>
+          <a href="/#deep">接触压强测算方法</a>
+          <a href="/#faq">安全词复述流程</a>
+          <a href="/#picks">粗跟静压耐受时长</a>
+          <a href="/#timeline">坡跟缓压实测</a>
+          <a href="/#reviews">穆勒鞋重心讨论</a>
+          <a href="/#faq">压痕消退判断</a>
+          <a href="/#news">鞋底花纹差异</a>
+          <a href="/#guide">缓冲垫厚度选择</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- 侧栏（DOM 在主内容之后，移动端自然置后） -->
+    <aside class="side" aria-label="侧栏导航与参数">
+      <div class="side-card">
+        <h3>栏目导航</h3>
+        <ul class="sidenav" id="sideNav">
+          <li><a href="/#overview">玩法概览</a></li>
+          <li><a href="/#picks">精选条目</a></li>
+          <li><a href="/#updates">最新更新</a></li>
+          <li><a href="/#channels">分类索引</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#timeline">鞋型时间线</a></li>
+          <li><a href="/#reviews">体验者说</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>关键参数</h3>
+        <ul class="kv">
+          <li><span>最小跟径</span><b>6 mm</b></li>
+          <li><span>常见粗跟</span><b>20—38 mm</b></li>
+          <li><span>建议垫厚</span><b>3 mm</b></li>
+          <li><span>单次静压上限</span><b>30 s</b></li>
+          <li><span>压痕消退窗口</span><b>15 min</b></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>数据说明</h3>
+        <p>对照数据来自 6 位体验者在 2026 年 10 月 16 日至 11 月 5 日期间的自测记录，印痕面积用坐标纸拍照法测量，偏差范围 ±8%—11%。</p>
+        <p>样本量小，结论以可复现的核对点为主，不作为通用标准。</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- 页尾 -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px">
+          <svg viewBox="0 0 64 64" role="img" aria-label="页尾图形标志" style="width:30px;height:30px">
+            <rect width="64" height="64" rx="15" fill="#3a2a47"/>
+            <path d="M17 45h7V26h-7z" fill="#e8a0b4"/>
+            <path d="M28 45h7V20h-7z" fill="#c2748f"/>
+            <path d="M39 45h6V31h-6z" fill="#8f5474"/>
+            <path d="M13 51h38" stroke="#e8a0b4" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+          <span><b>高跟踩踏</b><small>触感偏好档案</small></span>
+        </div>
+        <p style="font-size:13.5px;max-width:26em">记录鞋跟形态与接触压力之间的对应关系，把沟通流程和安全边界放在数据旁边。</p>
+      </div>
+      <div>
+        <h3>栏目入口</h3>
+        <ul>
+          <li><a href="/#overview">玩法概览</a></li>
+          <li><a href="/#picks">精选条目</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>继续阅读</h3>
+        <ul>
+          <li><a href="/#updates">最新更新</a></li>
+          <li><a href="/#channels">分类索引</a></li>
+          <li><a href="/#reviews">体验者说</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#recos">相关推荐</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-note">
+      <p>页面数据为示例整理：鞋型参数与压强估算来自公开资料及体验者自测，样本量 6—19 人，不代表普遍结论。所有人物均为化名。</p>
+      <p>内容更新时间 2026-11-06，对应正文“最新更新”与“鞋型记录时间线”中的条目。</p>
+      <p>© 2026 高跟踩踏触感偏好档案 · 示例站点，仅用于内容演示。</p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" aria-label="回到顶部" title="回到顶部">↑</button>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "name":"高跟踩踏",
+      "description":"围绕高跟鞋触感体验的偏好话题，整理玩法分类、力度分级、安全边界与常见疑问。",
+      "inLanguage":"zh-CN"
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"细跟踩踏会不会直接造成皮肤破损？","acceptedAnswer":{"@type":"Answer","text":"跟径 6—10 毫米的细跟，在单脚承重 30 公斤、静压 20 秒以内的条件下，多数记录只留下压痕，未见破损。超过 1 分钟且无缓冲垫时，压痕加深并可能伴随持续刺痛。"}},
+        {"@type":"Question","name":"粗跟和坡跟的体感差别在哪里？","acceptedAnswer":{"@type":"Answer","text":"粗跟接触面边界清楚，压力分布较均匀；坡跟从脚掌到后跟连续过渡，接触长度更长，压力摊得更开，体感偏钝。"}},
+        {"@type":"Question","name":"安全词为什么要在动作切换前复述一次？","acceptedAnswer":{"@type":"Answer","text":"9 位使用者记录中，7 次说不出口都发生在动作切换的 3 秒内。切换前先停下并复述一次，把发声动作前移到注意力相对充裕的时点。"}},
+        {"@type":"Question","name":"缓冲垫会不会让体验完全变味？","acceptedAnswer":{"@type":"Answer","text":"3 毫米厚软垫能把峰值压强降低约三成，触点锐利边界变钝。同一双细跟加垫前后评分为 8.1 与 6.9，差别明显但体验仍在。"}},
+        {"@type":"Question","name":"高跟靴比单鞋更适合长时间接触吗？","acceptedAnswer":{"@type":"Answer","text":"鞋筒参与接触后压力分布到更大范围，单点刺激变弱、包裹感变强。高跟靴静压 60 秒的耐受度高于同高度单鞋，但评分只有 7.2。"}},
+        {"@type":"Question","name":"压痕多久不消就该停下来？","acceptedAnswer":{"@type":"Answer","text":"15 分钟内压痕应明显消退。若持续发红超过 2 小时或出现局部麻木、针刺感，停止并冷敷，不要叠加新一轮。"}}
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+(function(){
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mainNav');
+  var navLinks = nav ? Array.prototype.slice.call(nav.querySelectorAll('a')) : [];
+
+  function closeMenu(){
+    if(nav.classList.contains('open')){
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+    }
+  }
+  if(menuBtn){
+    menuBtn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  navLinks.forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMenu();
+  });
+
+  /* 侧栏滚动高亮 */
+  var sideAnchors = Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var sections = sideAnchors.map(function(a){
+    var id = a.getAttribute('href').replace('/#','');
+    return document.getElementById(id);
+  }).filter(Boolean);
+
+  function setActive(){
+    var pos = window.scrollY + 150;
+    var current = null;
+    sections.forEach(function(sec){
+      if(sec.offsetTop <= pos) current = sec.id;
+    });
+    sideAnchors.forEach(function(a){
+      var id = a.getAttribute('href').replace('/#','');
+      a.classList.toggle('active', id === current);
+    });
+    navLinks.forEach(function(a){
+      var id = a.getAttribute('href').replace('/#','');
+      a.classList.toggle('on', id === current);
+    });
+  }
+
+  /* 回到顶部 */
+  var toTop = document.getElementById('toTop');
+  function onScroll(){
+    if(window.scrollY > 520){ toTop.classList.add('show'); }
+    else { toTop.classList.remove('show'); }
+    setActive();
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* 本地搜索 */
+  var input = document.getElementById('searchInput');
+  var btn = document.getElementById('searchBtn');
+  var feedback = document.getElementById('searchFeedback');
+  var searchables = Array.prototype.slice.call(document.querySelectorAll('main h2, main h3, main summary, main .tag, main .recos a, main .pick-body p, main .upd b'));
+
+  function runSearch(){
+    var q = (input.value || '').trim();
+    if(!q){
+      feedback.classList.remove('show');
+      feedback.textContent = '';
+      return;
+    }
+    var hit = null;
+    for(var i=0;i<searchables.length;i++){
+      var el = searchables[i];
+      if(el.textContent.indexOf(q) > -1){
+        hit = el;
+        break;
+      }
+    }
+    if(hit){
+      feedback.classList.remove('show');
+      feedback.textContent = '';
+      var target = hit.closest('section') || hit;
+      var offset = 40 + 62 + 14;
+      var y = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({top:y, behavior:'smooth'});
+      if(hit.tagName === 'SUMMARY' && hit.parentElement && hit.parentElement.tagName === 'DETAILS'){
+        hit.parentElement.open = true;
+      }
+    } else {
+      feedback.classList.add('show');
+      feedback.textContent = '没有找到与“' + q + '”对应的条目。可以试试：细跟、粗跟、坡跟、安全词、压痕、缓冲垫。';
+    }
+  }
+  btn.addEventListener('click', runSearch);
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); runSearch(); }
+  });
+})();
+</script>
+</body>
+                </html>
